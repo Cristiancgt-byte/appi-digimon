@@ -1,204 +1,110 @@
-/* ======== RESETEO ======== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 body {
-  background: linear-gradient(180deg, #1c1f26, #232730);
-  color: white;
-  min-height: 100vh;
-  text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #001f3f, #003366);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-/* ======== TÍTULO ======== */
 h1 {
-  margin-top: 20px;
-  font-size: 2.2rem;
-  text-shadow: 0 0 10px #00d9ff;
+    background-color: #0074D9;
+    color: white;
+    padding: 15px;
+    margin: 0;
+    text-shadow: 1px 1px 4px #000;
 }
 
-/* ======== NAV ======== */
 nav {
-  margin: 20px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #004080;
+    padding: 10px;
+    gap: 8px;
 }
 
 nav button {
-  background: linear-gradient(135deg, #0f9, #06f);
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    background-color: #00BFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 nav button:hover {
-  background: linear-gradient(135deg, #06f, #0f9);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    background-color: #00FFFF;
+    color: #003366;
 }
 
-/* Botón especial de Evolución */
-nav button:last-child {
-  background: linear-gradient(135deg, #ffcc00, #ff6600);
-  color: #000;
-  font-weight: 700;
-  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+#root {
+    padding: 20px;
 }
 
-nav button:last-child:hover {
-  background: linear-gradient(135deg, #ff9900, #ff3300);
-  box-shadow: 0 0 15px rgba(255, 100, 0, 0.9);
-}
-
-/* ======== BUSCADOR ======== */
 .c-buscador {
-  width: 80%;
-  max-width: 400px;
-  margin: 10px auto 20px auto;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
-  outline: none;
-  text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    width: 70%;
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
 
-/* ======== FILTRO DE NIVELES ======== */
-.tipos-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+.c-lista-digimon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    width: 150px;
+    transition: transform 0.2s;
+    cursor: pointer;
 }
 
-.tipos-container button {
-  background: linear-gradient(135deg, #ff00ff, #8000ff);
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+.c-lista-digimon:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.tipos-container button:hover {
-  background: linear-gradient(135deg, #ff66ff, #a000ff);
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
+.c-lista-digimon img {
+    border-radius: 10px;
+    background-color: #fff;
 }
 
-/* ======== LISTA ======== */
-#la-lista {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-
-.c-lista-pokemon {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 10px;
-  text-align: center;
-  transition: 0.3s;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-}
-
-.c-lista-pokemon:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-.c-lista-pokemon img {
-  width: auto;
-  height: 100px;
-}
-
-/* ======== DETALLE ======== */
 .c-detalle {
-  margin: 20px auto;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.c-detalle img {
-  border-radius: 10px;
-  margin-bottom: 10px;
+    background-color: rgba(0, 0, 50, 0.4);
+    border-radius: 15px;
+    padding: 20px;
+    display: inline-block;
 }
 
 .c-detalle button {
-  background: linear-gradient(135deg, #00d9ff, #0066ff);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
+    margin-top: 10px;
+    background: #00BFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .c-detalle button:hover {
-  background: linear-gradient(135deg, #0099ff, #00ffff);
-  transform: scale(1.05);
+    background: #00FFFF;
+    color: #003366;
 }
 
-/* Botón “ver otro” */
-.btn-otro {
-  background: #ffcc00;
-  color: #000;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
+.evo-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.btn-otro:hover {
-  background: #ff6600;
-  color: #fff;
-  transform: scale(1.05);
-}
-
-/* ======== RESPONSIVE ======== */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  nav button {
-    padding: 8px 10px;
-    font-size: 0.9rem;
-  }
-
-  .c-buscador {
-    width: 90%;
-    font-size: 0.9rem;
-  }
-
-  #la-lista {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  }
-
-  .c-detalle {
-    width: 90%;
-    font-size: 0.9rem;
-  }
+.info {
+    max-width: 600px;
+    margin: auto;
+    text-align: justify;
 }
