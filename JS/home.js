@@ -1,21 +1,21 @@
-function generarLista(arraydigimones) {
+function generarLista(arrayDigimones) {
   let listaHTML = "";
-  for (let i = 0; i < arraydigimones.length; i++) {
-    let id = i + 1; // usamos índice como ID
+  for (let i = 0; i < arrayDigimones.length; i++) {
     listaHTML += `
-      <div class="c-lista-digimon" onclick="Detalle('${arraydigimones[i].name}')">
-        <p>#${id}</p>
-        <img src="${arraydigimones[i].img}" width="auto" height="100" loading="lazy" alt="${arraydigimones[i].name}">
-        <p>${arraydigimones[i].name}</p>
-        <p>${arraydigimones[i].level}</p>
+      <div class="c-lista-pokemon" onclick="Detalle('${arrayDigimones[i].name}')">
+        <p>${arrayDigimones[i].name}</p>
+        <img src="${arrayDigimones[i].img}" width="auto" height="100" loading="lazy" alt="${arrayDigimones[i].name}">
+        <p>Nivel: ${arrayDigimones[i].level}</p>
       </div>`;
   }
   return listaHTML;
 }
 
-function buscadorfuncion(valor) {
-  if (valor.length >= 2) {
-    const filtrados = digimones.filter(d => d.name.toLowerCase().includes(valor.toLowerCase()));
+function buscadorfuncion(sza) {
+  if (sza.length >= 3) {
+    const filtrados = digimones.filter((d) =>
+      d.name.toLowerCase().includes(sza.toLowerCase())
+    );
     let listaHTML = generarLista(filtrados);
     document.getElementById("la-lista").innerHTML = listaHTML;
   }
@@ -25,7 +25,7 @@ function home() {
   const root = document.getElementById("root");
   root.innerHTML = "";
 
-  // buscador
+  // Buscador
   const buscador = document.createElement("input");
   buscador.classList.add("c-buscador");
   buscador.type = "text";
@@ -34,10 +34,18 @@ function home() {
     buscadorfuncion(buscador.value);
   });
 
-  // filtros por nivel
-  const niveles = ["In Training", "Rookie", "Champion", "Ultimate", "Mega", "Armor"];
+  // Contenedor filtro (niveles)
+  const niveles = [
+    "In Training",
+    "Rookie",
+    "Champion",
+    "Ultimate",
+    "Mega",
+    "Armor"
+  ];
+
   const contenedorFiltro = document.createElement("div");
-  contenedorFiltro.classList.add("niveles-container");
+  contenedorFiltro.classList.add("tipos-container");
 
   for (let i = 0; i < niveles.length; i++) {
     const btn = document.createElement("button");
@@ -48,13 +56,14 @@ function home() {
     contenedorFiltro.appendChild(btn);
   }
 
-  // contenedor lista
+  // Lista de Digimon
   const listaHTML = generarLista(digimones);
-  const contenedor = document.createElement("section");
-  contenedor.id = "la-lista";
-  contenedor.innerHTML = listaHTML;
+  var contenedorPokes = document.createElement("section");
+  contenedorPokes.id = "la-lista";
+  contenedorPokes.innerHTML = listaHTML;
 
   root.appendChild(buscador);
   root.appendChild(contenedorFiltro);
-  root.appendChild(contenedor);
+  root.appendChild(contenedorPokes);
 }
+

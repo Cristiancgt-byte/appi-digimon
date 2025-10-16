@@ -1,31 +1,33 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DigimonDex</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digidex</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>DigimonDex</h1>
+    <h1>🔥 Digidex - Digimon API 🔥</h1>
+    
+    <nav>
+        <button onclick="home()">Home</button>
+        <button onclick="informativa()">Informativa</button>
+        <button onclick="capturados()">Capturados</button>
+        <button onclick="favoritos()">Favoritos</button>
+        <button onclick="evolucion()">Evolución</button> <!-- Nuevo -->
+    </nav>
 
-  <nav>
-    <button onclick="home()">Home</button>
-    <button onclick="informativa()">Informativa</button>
-    <button onclick="capturados()">Capturados</button>
-    <button onclick="favoritos()">Favoritos</button>
-  </nav>
+    <div id="root"></div>
 
-  <div id="root"></div>
+    <script src="/JS/conexion.js"></script>
+    <script src="/JS/capturados.js"></script>
+    <script src="/JS/favoritos.js"></script>
+    <script src="/JS/home.js"></script>
+    <script src="/JS/informativa.js"></script>
+    <script src="/JS/pokemon.js"></script>
+    <script src="/JS/evolucion.js"></script>
 
-  <script src="/JS/conexion.js"></script>
-  <script src="/JS/capturados.js"></script>
-  <script src="/JS/favoritos.js"></script>
-  <script src="/JS/home.js"></script>
-  <script src="/JS/informativa.js"></script>
-  <script src="/JS/digimon.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", general);
-  </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", general);
+    </script>
 </body>
 </html>

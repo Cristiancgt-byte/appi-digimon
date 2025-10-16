@@ -1,3 +1,4 @@
+var totalDigi = [];
 var digimones = [];
 
 async function conexion() {
@@ -6,7 +7,7 @@ async function conexion() {
   return data;
 }
 
-// Cargar todos los digimones al iniciar
+// Cargar todos los Digimon al iniciar
 async function general() {
   if (digimones.length === 0) {
     digimones = await conexion();
@@ -14,10 +15,24 @@ async function general() {
   home();
 }
 
+// Filtro por nivel
 async function FiltroConexion(levelFiltro) {
-  document.getElementById("la-lista").innerHTML = "";
+  document.getElementById("la-lista").innerHTML = "<p style='text-align:center;'>Cargando...</p>";
   const data = await conexion();
-  digimones = data.filter(d => d.level.toLowerCase() === levelFiltro.toLowerCase());
-  const listaHTML = generarLista(digimones);
-  document.getElementById("la-lista").innerHTML = listaHTML;
+
+  // Normalizar texto (minúsculas y sin espacios)
+  const normalizar = (texto) => texto.toLowerCase().replace(/\s+/g, "");
+
+  digimones = data.filter(
+    (d) => normalizar(d.level) === normalizar(levelFiltro)
+  );
+
+  const root = document.getElementById("la-lista");
+
+  if (digimones.length === 0) {
+    root.innerHTML = `<p style="text-align:center; color:#ccc;">No se encontraron Digimon con el nivel <b>${levelFiltro}</b></p>`;
+  } else {
+    const listaHTML = generarLista(digimones);
+    root.innerHTML = `<p style="text-align:center;">Mostrando ${digimones.length} resultados (${levelFiltro})</p>` + listaHTML;
+  }
 }

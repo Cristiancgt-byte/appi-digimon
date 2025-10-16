@@ -2,10 +2,10 @@ var esFavorito = false;
 
 function toggleFavorito(name, img, level) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-  const existe = favoritos.some(d => d.name === name);
+  let existe = favoritos.some(f => f.name === name);
 
   if (existe) {
-    favoritos = favoritos.filter(d => d.name !== name);
+    favoritos = favoritos.filter(poke => poke.name !== name);
     esFavorito = false;
   } else {
     favoritos.push({ name, img, level });
@@ -20,25 +20,24 @@ function toggleFavorito(name, img, level) {
 
 async function Detalle(nombre) {
   const root = document.getElementById("root");
-  root.innerHTML = "";
+  root.innerHTML = "<p style='text-align:center;'>Cargando...</p>";
 
-  const res = await fetch(`https://digimon-api.vercel.app/api/digimon/name/${nombre}`);
+  const res = await fetch("https://digimon-api.vercel.app/api/digimon/name/" + nombre);
   const data = await res.json();
-  const digimon = data[0];
+  const digi = data[0];
 
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-  esFavorito = favoritos.some(d => d.name === digimon.name);
+  esFavorito = favoritos.some(poke => poke.name === digi.name);
 
-  const detalleHTML = `
+  const detalle = `
     <section class="c-detalle">
-      <img src="${digimon.img}" alt="${digimon.name}" height="150">
-      <h2>${digimon.name}</h2>
-      <p>Nivel: ${digimon.level}</p>
-      <button onClick="toggleFavorito('${digimon.name}', '${digimon.img}', '${digimon.level}')">
-        <span id="corazon-${digimon.name}">${esFavorito ? '❤️' : '🤍'}</span> Favorito
+      <img src="${digi.img}" alt="${digi.name}" height="150" width="auto">
+      <h2>${digi.name}</h2>
+      <p>Nivel: ${digi.level}</p>
+      <button onClick="toggleFavorito('${digi.name}', '${digi.img}', '${digi.level}')">
+        <span id="corazon-${digi.name}">${esFavorito ? '❤️' : '🤍'}</span> Favorito
       </button>
     </section>
   `;
-
-  root.innerHTML = detalleHTML;
+  root.innerHTML = detalle;
 }
