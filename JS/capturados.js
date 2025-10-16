@@ -1,3 +1,3 @@
 function capturados() {
-  document.getElementById("root").innerHTML = "📦 Capturados (función decorativa por ahora)";
+  document.getElementById("root").innerHTML = "📦 Capturados";
 }
