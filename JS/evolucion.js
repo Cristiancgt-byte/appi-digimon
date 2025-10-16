@@ -7,7 +7,6 @@ function evolucion() {
         return;
     }
 
-    // Seleccionar 6 Digimon aleatorios
     const aleatorios = [];
     for (let i = 0; i < 6; i++) {
         const r = Math.floor(Math.random() * digimones.length);

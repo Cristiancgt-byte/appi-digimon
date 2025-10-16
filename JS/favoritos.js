@@ -1,12 +1,10 @@
 function favoritos() {
     let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-    // Filtrar los que tengan datos válidos
     favoritos = favoritos.filter(d =>
         d && d.name && d.img && d.level
     );
 
-    // Si hay datos corruptos, los limpiamos del localStorage
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
     if (favoritos.length === 0) {
